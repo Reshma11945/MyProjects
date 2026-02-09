@@ -1,0 +1,329 @@
+:host {
+  display: block;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.valentine-container {
+  min-height: 100vh;
+  max-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 100%);
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+// Main card
+.card {
+  background: white;
+  border-radius: 30px;
+  padding: 30px 25px;
+  box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// Celebration card
+.celebration-card {
+  background: white;
+  border-radius: 30px;
+  padding: 20px 15px;
+  box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  max-height: 90vh;
+  overflow: hidden;  // ← CHANGE from auto - prevents scroll movement
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  // Centers everything vertically
+  align-items: center;
+  
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// Teddy Bear Emoji Character
+.character {
+   margin-bottom: 15px;  // Consistent spacing
+  flex-shrink: 0;  // ADD THIS - prevents shrinking
+}
+
+.emoji-character {
+  font-size: 100px;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(255, 105, 180, 0.2));
+}
+.celebration-screen .emoji-character {
+  animation: none;  // Stop floating animation on celebration screen
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(-5deg); 
+  }
+  50% { 
+    transform: translateY(-10px) rotate(5deg); 
+  }
+}
+
+// Main question
+.question {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 40px;
+  font-weight: 700;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: -0.5px;
+}
+
+// Button container
+.button-container {
+  position: relative;
+  min-height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+// Yes button
+.yes-button {
+  background: linear-gradient(135deg, #ff6b9d 0%, #c86ca5 100%);
+  color: white;
+  border: none;
+  padding: 12px 45px;
+  font-size: 22px;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 10;
+  position: relative;
+  
+  &:hover {
+    box-shadow: 0 12px 30px rgba(255, 107, 157, 0.6);
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// No button
+.no-button {
+  background: #e0e0e0;
+  color: #666;
+  border: none;
+  padding: 12px 45px;
+  font-size: 22px;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 5;
+  position: relative;
+  
+  &:hover {
+    background: #d0d0d0;
+  }
+  
+  &.absolute-position {
+    position: absolute;
+  }
+  
+  &.hidden-behind {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.3;
+  }
+}
+
+// Hint text
+.hint {
+  margin-top: 25px;
+  color: #ff69b4;
+  font-style: italic;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+// Celebration Screen
+.celebration-screen {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.celebration-text {
+  font-size: 20px;  // ← Reduce from 22px
+  color: #333;
+  margin: 10px 0 5px;
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  white-space: nowrap;  // ← ADD THIS - prevents text wrapping
+  overflow: hidden;  // ← ADD THIS
+  text-overflow: ellipsis;  // ← ADD THIS
+  max-width: 100%;  // ← ADD THIS
+}
+
+.yay-text {
+  font-size: 32px;
+  color: #ff69b4;
+  margin: 5px 0 10px;
+  font-weight: bold;
+  animation: bounce 0.6s ease infinite;
+}
+
+.gif-container {
+ margin-top: 10px;
+  margin-bottom: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  line-height: 0;
+  flex-shrink: 0; 
+}
+
+.celebration-gif {
+  width: 100%;
+  max-width: 300px;  // ← CHANGE from 100% - makes it smaller
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+// Confetti
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.confetti {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #ff69b4;
+  top: -10px;
+  animation: fall 4s linear infinite;
+}
+
+.confetti:nth-child(1) { left: 5%; animation-delay: 0s; background: hsl(340, 70%, 60%); }
+.confetti:nth-child(2) { left: 10%; animation-delay: 0.2s; background: hsl(20, 70%, 60%); }
+.confetti:nth-child(3) { left: 15%; animation-delay: 0.4s; background: hsl(60, 70%, 60%); }
+.confetti:nth-child(4) { left: 20%; animation-delay: 0.1s; background: hsl(120, 70%, 60%); }
+.confetti:nth-child(5) { left: 25%; animation-delay: 0.3s; background: hsl(180, 70%, 60%); }
+.confetti:nth-child(6) { left: 30%; animation-delay: 0.5s; background: hsl(240, 70%, 60%); }
+.confetti:nth-child(7) { left: 35%; animation-delay: 0.2s; background: hsl(300, 70%, 60%); }
+.confetti:nth-child(8) { left: 40%; animation-delay: 0.4s; background: hsl(30, 70%, 60%); }
+.confetti:nth-child(9) { left: 45%; animation-delay: 0.1s; background: hsl(90, 70%, 60%); }
+.confetti:nth-child(10) { left: 50%; animation-delay: 0.3s; background: hsl(150, 70%, 60%); }
+.confetti:nth-child(11) { left: 55%; animation-delay: 0.5s; background: hsl(210, 70%, 60%); }
+.confetti:nth-child(12) { left: 60%; animation-delay: 0.2s; background: hsl(270, 70%, 60%); }
+.confetti:nth-child(13) { left: 65%; animation-delay: 0.4s; background: hsl(330, 70%, 60%); }
+.confetti:nth-child(14) { left: 70%; animation-delay: 0.1s; background: hsl(50, 70%, 60%); }
+.confetti:nth-child(15) { left: 75%; animation-delay: 0.3s; background: hsl(110, 70%, 60%); }
+.confetti:nth-child(16) { left: 80%; animation-delay: 0.5s; background: hsl(170, 70%, 60%); }
+.confetti:nth-child(17) { left: 85%; animation-delay: 0.2s; background: hsl(230, 70%, 60%); }
+.confetti:nth-child(18) { left: 90%; animation-delay: 0.4s; background: hsl(290, 70%, 60%); }
+.confetti:nth-child(19) { left: 95%; animation-delay: 0.1s; background: hsl(350, 70%, 60%); }
+.confetti:nth-child(20) { left: 100%; animation-delay: 0.3s; background: hsl(70, 70%, 60%); }
+
+@keyframes fall {
+  to {
+    top: 110vh;
+    transform: translateX(100px) rotate(720deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+// Responsive
+@media (max-width: 600px) {
+  .card {
+    padding: 25px 15px;
+    max-width: 380px;
+    max-height: 95vh;
+  }
+  
+  .celebration-card {
+    padding: 25px 15px;
+    max-height: 95vh;
+  }
+  
+  .emoji-character {
+    font-size: 80px;
+  }
+  
+  .question,
+  .celebration-text {
+    font-size: 20px;
+  }
+  
+  .yes-button,
+  .no-button {
+    padding: 10px 35px;
+    font-size: 20px;
+  }
+  
+  .button-container {
+    gap: 12px;
+    min-height: 140px;
+  }
+  
+  .celebration-gif {
+    max-width: 250px;
+  }
+  
+  .yay-text {
+    font-size: 28px;
+  }
+}
